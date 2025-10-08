@@ -42,8 +42,9 @@ const toolConfig = {
 
 const callback: KintoneToolCallback<typeof inputSchema> = async (
   { app, properties, revision },
-  { client },
+  { getClient },
 ) => {
+  const client = getClient();
   const response = await client.app.updateFormFields({
     app,
     properties: properties,

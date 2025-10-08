@@ -38,7 +38,7 @@ const toolConfig = {
 };
 const callback: KintoneToolCallback<typeof inputSchema> = async (
   { fileKey, fileName },
-  { client, attachmentsDir },
+  { getClient, attachmentsDir },
 ) => {
   // Check if download directory is configured
   if (!attachmentsDir) {
@@ -47,6 +47,7 @@ const callback: KintoneToolCallback<typeof inputSchema> = async (
     );
   }
 
+  const client = getClient();
   const buffer = await client.file.downloadFile({ fileKey });
 
   ensureDirectoryExists(attachmentsDir);

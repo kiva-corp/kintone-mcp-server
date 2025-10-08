@@ -49,6 +49,43 @@ kintoneの公式ローカルMCPサーバーです。
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
+## ブランチ運用
+
+このリポジトリでは、以下のブランチ運用を行っています。
+
+### ブランチフロー図
+
+```
+upstream/main (本家)
+    ↓ fetch & merge (定期同期)
+main (追従用)
+    ↓ merge (定期同期)
+kiva/stable (安定版・社内利用)
+    ↑ PR (機能完成時)
+    ↓ branch (開発開始時)
+feat-* or fix-* (機能開発)
+```
+
+### ブランチ構成
+
+- **`main`**: 本家の最新状態を追従するためのブランチ
+  - 本家リポジトリ(upstream)からの変更を定期的にマージ
+  - 直接コミットは行わない
+- **`kiva/stable`**: 安定版ブランチ（社内利用版）
+  - 機能開発ブランチからのPRを受け入れる
+  - 定期的に`main`から本家の更新を同期
+- **`feat-*,fix-*,etc`**: 機能開発ブランチ
+  - 新機能の開発や既存機能の改修を行う
+  - `kiva/stable`ブランチから分岐
+  - 開発完了後、`kiva/stable`に向けてPRを作成
+
+### 注意事項
+
+- このforkは社内ツールとして利用するため、本家へのPRは想定していません
+- `main`ブランチは本家との同期専用とし、独自の変更は行いません
+- 機能開発ブランチは必ず`kiva/stable`に向けてPRを作成してください
+- 定期的に`upstream/main` → `main` → `kiva/stable`への同期を行い、本家との差分を最小限に保ちます
+
 ## インストール
 
 ### DXT (Claude Desktop用パッケージ)

@@ -26,8 +26,9 @@ const outputSchema = {
 
 const callback: KintoneToolCallback<typeof inputSchema> = async (
   { app, preview },
-  { client },
+  { getClient },
 ) => {
+  const client = getClient();
   const response = await client.app.getFormLayout({
     app,
     preview,
