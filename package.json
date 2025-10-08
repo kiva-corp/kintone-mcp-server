@@ -23,7 +23,7 @@
   "type": "module",
   "main": "dist/index.js",
   "bin": {
-    "kintone-mcp-server": "dist/index.js"
+    "kintone-mcp-server": "dist/standalone.js"
   },
   "files": [
     "CHANGELOG.md",

@@ -35,8 +35,9 @@ const toolConfig = {
 };
 const callback: KintoneToolCallback<typeof inputSchema> = async (
   { apps },
-  { client },
+  { getClient },
 ) => {
+  const client = getClient();
   const result = await client.app.getDeployStatus({
     apps,
   });

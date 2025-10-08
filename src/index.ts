@@ -1,34 +1,57 @@
-#!/usr/bin/env node
-import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { createServer, type KintoneMcpServerOptions } from "./server/index.js";
-import {
-  getFileConfig,
-  getKintoneClientConfig,
-  getMcpServerConfig,
-  getToolConditionConfig,
-} from "./config/index.js";
+// ============================================
+// Library API (Primary Use Case)
+// ============================================
 
-const main = async () => {
-  const transport = new StdioServerTransport();
-  console.error("Starting server...");
+// Main registration interface
+export {
+  registerKintoneTools,
+  type RegisterKintoneToolsOptions,
+} from "./register.js";
 
-  const mcpServerConfig = getMcpServerConfig();
-  const clientConfig = getKintoneClientConfig();
-  const fileConfig = getFileConfig();
-  const toolConditionConfig = getToolConditionConfig();
+// Client utilities
+export {
+  createKintoneClient,
+  type KintoneClientConfig,
+} from "./client/index.js";
 
-  const serverConfig: KintoneMcpServerOptions = {
-    name: mcpServerConfig.name,
-    version: mcpServerConfig.version,
-    config: {
-      clientConfig,
-      fileConfig,
-      toolConditionConfig,
-    },
-  };
-  const server = createServer(serverConfig);
+// Individual tools and tool groups
+export {
+  // Individual tools
+  addApp,
+  deployApp,
+  getApp,
+  getApps,
+  addFormFields,
+  deleteFormFields,
+  updateFormFields,
+  getFormFields,
+  updateFormLayout,
+  getFormLayout,
+  updateGeneralSettings,
+  getGeneralSettings,
+  getAppDeployStatus,
+  getProcessManagement,
+  addRecords,
+  getRecords,
+  updateRecords,
+  deleteRecords,
+  updateStatuses,
+  downloadFile,
+  // Tool groups
+  kintoneAppTools,
+  kintoneRecordTools,
+  kintoneFileTools,
+  tools,
+} from "./tools/index.js";
 
-  await server.connect(transport);
-};
+// Type exports
+export type { ToolCallbackOptions, Tool } from "./tools/types/tool.js";
 
-main().catch(console.error);
+// ============================================
+// Standalone Server API (Backward Compatibility)
+// ============================================
+
+export {
+  createServer,
+  type KintoneMcpServerOptions,
+} from "./server/index.js";

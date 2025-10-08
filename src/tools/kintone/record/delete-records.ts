@@ -30,8 +30,9 @@ const toolConfig = {
 
 const callback: KintoneToolCallback<typeof inputSchema> = async (
   { app, ids, revisions },
-  { client },
+  { getClient },
 ) => {
+  const client = getClient();
   await client.record.deleteRecords({ app, ids, revisions });
 
   return {

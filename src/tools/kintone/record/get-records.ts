@@ -161,8 +161,9 @@ const toolConfig = {
 
 const callback: KintoneToolCallback<typeof inputSchema> = async (
   { app, filters, fields, orderBy, limit, offset },
-  { client },
+  { getClient },
 ) => {
+  const client = getClient();
   let query = filters ? buildQueryFromFilters(filters) : undefined;
 
   if (orderBy && orderBy.length > 0) {

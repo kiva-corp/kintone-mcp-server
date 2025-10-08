@@ -3,7 +3,7 @@ import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
 import type { ZodRawShape, ZodTypeAny, z } from "zod";
 
 export type ToolCallbackOptions = {
-  client: KintoneRestAPIClient;
+  getClient: () => KintoneRestAPIClient;
   attachmentsDir?: string;
 };
 
@@ -24,6 +24,9 @@ export type Tool<
   name: string;
   config: ToolConfig<InputArgs, OutputArgs>;
   callback: KintoneToolCallback<InputArgs>;
+  createCallback: (options: ToolCallbackOptions) => (
+    args: z.objectOutputType<InputArgs, ZodTypeAny>
+  ) => CallToolResult | Promise<CallToolResult>;
 };
 
 export type KintoneToolCallback<InputArgs extends ZodRawShape> = (

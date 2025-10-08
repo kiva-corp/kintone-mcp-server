@@ -18,6 +18,8 @@ export const createTool = <
     name,
     config,
     callback,
+    createCallback: (options: ToolCallbackOptions) =>
+      createToolCallback(callback, options),
   };
 };
 

@@ -48,8 +48,9 @@ const toolConfig = {
 };
 const callback: KintoneToolCallback<typeof inputSchema> = async (
   { appId },
-  { client },
+  { getClient },
 ) => {
+  const client = getClient();
   const app = await client.app.getApp({ id: appId });
   const result = {
     appId: app.appId,
