@@ -1,5 +1,5 @@
 {
-  "name": "@kintone/mcp-server",
+  "name": "@kiva-corp/kintone-mcp-server",
   "version": "1.2.0",
   "description": "The official MCP Server for kintone",
   "keywords": [
@@ -7,13 +7,13 @@
     "mcp",
     "modelcontextprotocol"
   ],
-  "homepage": "https://github.com/kintone/mcp-server#readme",
+  "homepage": "https://github.com/kiva-corp/kintone-mcp-server#readme",
   "bugs": {
-    "url": "https://github.com/kintone/mcp-server/issues"
+    "url": "https://github.com/kiva-corp/kintone-mcp-server/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kintone/mcp-server.git"
+    "url": "git+https://github.com/kiva-corp/kintone-mcp-server.git"
   },
   "license": "Apache-2.0",
   "author": {
@@ -87,6 +87,7 @@
     "node": ">= 22"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
   }
 }

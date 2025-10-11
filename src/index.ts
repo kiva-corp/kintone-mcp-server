@@ -51,7 +51,4 @@ export type { ToolCallbackOptions, Tool } from "./tools/types/tool.js";
 // Standalone Server API (Backward Compatibility)
 // ============================================
 
-export {
-  createServer,
-  type KintoneMcpServerOptions,
-} from "./server/index.js";
+export { createServer, type KintoneMcpServerOptions } from "./server/index.js";
