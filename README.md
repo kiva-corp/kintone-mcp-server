@@ -49,6 +49,10 @@ kintoneの公式ローカルMCPサーバーです。
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
+## Kiva フォーク
+
+公式ローカルMCPサーバーをフォークして、Kiva で必要なもののみ npm 経由で利用できるようにしてる。
+
 ## ブランチ運用
 
 このリポジトリでは、以下のブランチ運用を行っています。
